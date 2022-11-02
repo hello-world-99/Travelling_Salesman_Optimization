@@ -1,8 +1,12 @@
 import itertools
+import datetime
 from util import City, read_cities, write_cities_and_return_them, generate_cities, path_cost, visualize_tsp
+
+start_time = datetime.datetime.now()
 
 
 class BruteForce:
+
     def __init__(self, cities):
         self.cities = cities
 
@@ -12,7 +16,8 @@ class BruteForce:
 
 
 if __name__ == "__main__":
-
-    brute = BruteForce(generate_cities(8))
+    brute = BruteForce(read_cities(12))
     print(brute.run())
+    end_time = datetime.datetime.now() - start_time
+    print("--- %s seconds ---" % (end_time.total_seconds()))
     visualize_tsp('Brute force TSP', brute.cities)
